@@ -1,0 +1,8 @@
+{
+  "name": "Explanation_Visualization",
+  "version": "0.5",
+  "description": "This is a project of visual analysis that explain result of diferent dimensional reduction method.",
+  "main": "App.js",
+  "author": "Roberto RU.",
+  "license": "MIT"
+}
