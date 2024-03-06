@@ -152,28 +152,32 @@ export default class Scatterplot extends Component {
                 console.log("Coordinates: ", coordinates[i]);
                 // se ha quitado una parte de la propuesta original y ahora el código está más simple, los valores de d y coordinates coinciden con PROPS orignales. 
                 // Estos son los datos originales proyectados. 
-                console.log("PROPS ->: ", this.props['projectionMatrix'][i-1]);
+                console.log("PROPS ->: ", this.props['projectionMatrix'][i]);
 
-                // Aquí puedes construir el objeto nodeData basado en la información del nodo clickeado
-                const nodeData = {
-                    index: i,
-                    coordinates: d,
-                    // Agrega cualquier otra información relevante sobre el nodo
-                };
-        
-                // Llama a la función handleNodeClick pasada como prop
-                this.props.handleNodeClick(nodeData);
-
-                d3.event.stopPropagation();
                 // Obtiene el elemento SVG del punto sobre el que se hizo click
                 const clickedPoint = d3.select(nodes[i]);
                 // Obtiene los valores de las coordenadas del punto
                 const cx = clickedPoint.attr("cx");
                 const cy = clickedPoint.attr("cy");
                 console.log("cx: ", cx, ", cy: ", cy);
+
+                console.log("cx inverted: ", xScale.invert(cx), ", cy inverted: ", yScale.invert(cy));
+
+                // Aquí puedes construir el objeto nodeData basado en la información del nodo clickeado
+                const nodeData = {
+                    index: i,
+                    coordinates: [xScale.invert(cx), yScale.invert(cy)],
+                    // Agrega cualquier otra información relevante sobre el nodo
+                };
+        
+                // Llama a la función handleNodeClick pasada como prop
+                this.props.handleNodeClick(nodeData);
+
                 // Muestra los valores en la consola
                 // Los datos de dscale y cx,cy son los mismos y parten de los datos ya procesados y luego escalados. 
                 console.log("d SCALE ->: ", xScale(d[0]), " - ", yScale(d[1]));
+
+                d3.event.stopPropagation();
             })
             .call(dragHandler);
     }

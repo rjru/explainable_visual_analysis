@@ -18,15 +18,15 @@ class App extends Component {
   // Función para realizar la solicitud POST
   handleNodeClick = async (nodeData) => {
     try {
-      const response = await fetch('/api/explanation', {
+      const response = await fetch('/api/explanation_resource', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(nodeData),
       });
-      const data = await response.json();
-      console.log(data); // Procesa la respuesta del servidor según sea necesario
+      const explain_node = await response.json();
+      console.log(explain_node); // Procesa la respuesta del servidor según sea necesario
     } catch (error) {
       console.error('Error al realizar la solicitud:', error);
     }
