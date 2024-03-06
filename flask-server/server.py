@@ -25,8 +25,8 @@ computation_method = "fancy"
 standarization = True
 
 n_explanations = 3
-ind_for_exp=0
-objetive_exp=np.array([0.0,  0.0])
+# ind_for_exp=0   
+# objetive_exp=np.array([0.0,  0.0])
 
 pj = Projection(dataset_desc, standarization, model_desc)
 exp_node = Explanation(pj, n_explanations, computation_method, model_desc)
