@@ -19,7 +19,7 @@ class ExplanationResource(Resource):
         transformed_samples_dist_list = [float(value) for value in self.ex_node.transformed_samples_dist]
         cf_transformed_samples_error_list = [[float(value) for value in error_list] for error_list in self.ex_node.cf_transformed_sanmples_error]
         X_cf_list = [[float(value) for value in x_cf] for x_cf in self.ex_node.X_cf_]
-        Y_cf_pred_list = [[float(value) for value in instance] for instance in self.ex_node.Y_cf_pred[0]]
+        Y_cf_pred_list = [[float(value) for value in instance] for instance in self.ex_node.Y_cf_pred]
         X_cf_D_list = [[float(value) for value in instance] for instance in self.ex_node.X_cf_D]
         
         # Create a dictionary to hold the data

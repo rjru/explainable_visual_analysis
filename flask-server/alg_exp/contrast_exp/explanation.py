@@ -55,7 +55,7 @@ class Explanation:
         if self.X_cf_ is None:
             print("Al parecer no se pudo encontar una explicabilidad")
 
-        self.Y_cf_pred = [self.pj.model.transform(x_cf) for x_cf in self.X_cf_] # se proyectan las explicaciones. 
+        self.Y_cf_pred = [self.pj.model.transform(x_cf)[0] for x_cf in self.X_cf_] # se proyectan las explicaciones. 
 
         cf_transformed_error = [np.linalg.norm(y_cf - y_cf_pred, 2) for y_cf_pred in self.Y_cf_pred] # resta de las 3 proyecciones en relación a la proyección de los datos perturbados
 
